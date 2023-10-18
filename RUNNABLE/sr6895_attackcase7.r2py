@@ -1,0 +1,7 @@
+myfile=openfile("testfile.txt",False)
+try:
+    assert("hello" == myfile.readat(None,0))
+except AssertionError:
+    log("Error: case6,7 failed: write was not done when file was not closed properly, led to incorrect read\n")
+log(myfile.readat(None,0))
+myfile.close()

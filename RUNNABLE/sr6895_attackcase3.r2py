@@ -1,0 +1,34 @@
+if "testfile.txt" in listfiles():
+  removefile("testfile.txt")
+
+myfile=openfile("testfile.txt",True)
+
+try:
+    myfile.writeat("12345678",-1)
+except RepyArgumentError:
+    pass
+else:
+    log("Error: case3 failed: negative offsets should throw RepyArgumentError as expected \n")
+
+try:
+    myfile.writeat("12345678",1)
+except SeekPastEndOfFileError:
+    pass
+else:
+    log("Error: case3 failed: offsets > EOF should throw SeekPastEndofFileError as expected \n")
+
+try:
+    myfile.readat(None,-1)
+except RepyArgumentError:
+    pass
+else:
+    log("Error: case3 failed: negative offsets should throw RepyArgumentError as expected \n")
+
+try:
+    myfile.readat(None,1)
+except SeekPastEndOfFileError:
+    pass
+else:
+    log("Error: case3 failed: offsets > EOF should throw SeekPastEndofFileError as expected \n")
+log(myfile.readat(None,0)+"\n")
+myfile.close()

@@ -1,0 +1,13 @@
+if "testfile.txt" in listfiles():
+  removefile("testfile.txt")
+
+myfile=openfile("testfile.txt",True)
+myfile.writeat("",0)
+myfile.writeat("0",0) 
+#log(myfile.readat(3,0))
+try:
+    assert("" == myfile.readat(None,0))
+except AssertionError:
+    log("Error: case5 failed: possible data values shoul be written and read properly\n")
+log(myfile.readat(None,0)+"\n")
+myfile.close()
