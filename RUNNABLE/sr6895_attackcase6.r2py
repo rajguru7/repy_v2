@@ -1,8 +1,0 @@
-if "testfile.txt" in listfiles():
-  removefile("testfile.txt")
-
-myfile=openfile("testfile.txt",True)
-myfile.writeat("hello",0)
-myfile.writeat("hi",5) 
-#log(myfile.readat(3,0))
-exitall()
