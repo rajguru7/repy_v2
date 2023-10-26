@@ -16,9 +16,6 @@ NC='\033[0m'
 #    printf '\n%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 #done
 for referencemonitor in reference_monitor_*; do
-        python repy.py restrictions.default encasementlib.r2py $referencemonitor &> flag_output
+        python repy.py restrictions.default encasementlib.r2py $referencemonitor
 done
 
-grep "reference_monitor_.*py" flag_output --only-matching | tr '\n' ' '
-
-#move the files from output into bad_files directory
